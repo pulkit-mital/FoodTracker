@@ -2,20 +2,19 @@ package com.pulkit.foodtracker.model;
 
 import android.support.annotation.NonNull;
 
-import com.pulkit.foodtracker.pojo.Restraunts;
+import com.pulkit.foodtracker.pojo.Restaurants;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by pulkitmital on 27/10/16.
  */
 
-public interface RestrauntDataSource {
+public interface RestaurantDataSource {
 
     interface LoadRestrauntCallback {
 
-        void onRestrauntLoaded(ArrayList<Restraunts> restraunts);
+        void onRestrauntLoaded(ArrayList<Restaurants> restraunts);
 
         void onDataNotAvailable();
 
@@ -23,7 +22,7 @@ public interface RestrauntDataSource {
 
     interface GetRestrauntCallback {
 
-        void onRestrauntLoaded(Restraunts restraunts);
+        void onRestrauntLoaded(Restaurants restaurants);
 
         void onDataNotAvailable();
     }

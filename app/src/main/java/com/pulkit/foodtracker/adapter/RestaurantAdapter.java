@@ -5,13 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pulkit.foodtracker.R;
 import com.pulkit.foodtracker.Utils.RatingComparator;
-import com.pulkit.foodtracker.pojo.Restraunts;
+import com.pulkit.foodtracker.pojo.Restaurants;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -21,17 +20,17 @@ import java.util.Collections;
  * Created by pulkitmital on 27/10/16.
  */
 
-public class RestrauntAdapter extends BaseAdapter {
+public class RestaurantAdapter extends BaseAdapter {
 
-    ArrayList<Restraunts> restrauntList;
+    ArrayList<Restaurants> restrauntList;
     private Context context;
 
-    public RestrauntAdapter(ArrayList<Restraunts> restrauntList, Context context) {
+    public RestaurantAdapter(ArrayList<Restaurants> restrauntList, Context context) {
         this.restrauntList = restrauntList;
         this.context = context;
     }
 
-    public void replaceRestraunt(ArrayList<Restraunts> restrauntList) {
+    public void replaceRestraunt(ArrayList<Restaurants> restrauntList) {
         this.restrauntList = restrauntList;
         Collections.sort(this.restrauntList, new RatingComparator());
         notifyDataSetChanged();
@@ -49,7 +48,7 @@ public class RestrauntAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-        return Long.valueOf(((Restraunts) restrauntList.get(i)).getId());
+        return Long.valueOf(((Restaurants) restrauntList.get(i)).getId());
     }
 
     @Override
@@ -65,12 +64,12 @@ public class RestrauntAdapter extends BaseAdapter {
         ImageView restrauntImageView = (ImageView) view.findViewById(R.id.restraunt_image);
 
 
-        Restraunts restraunts = restrauntList.get(i);
-        restrauntNameTextView.setText(restraunts.getName());
-        restrauntLocalityTextView.setText(restraunts.getLocality());
-        restrauntRatingTextView.setText(restraunts.getRating());
+        Restaurants restaurants = restrauntList.get(i);
+        restrauntNameTextView.setText(restaurants.getName());
+        restrauntLocalityTextView.setText(restaurants.getLocality());
+        restrauntRatingTextView.setText(restaurants.getRating());
 
-        Picasso.with(context).load(restraunts.getImage()).fit().error(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher).into(restrauntImageView);
+        Picasso.with(context).load(restaurants.getImage()).fit().error(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher).into(restrauntImageView);
         return view;
     }
 }

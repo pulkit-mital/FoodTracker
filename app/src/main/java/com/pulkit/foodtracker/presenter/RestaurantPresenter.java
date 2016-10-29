@@ -1,35 +1,33 @@
 package com.pulkit.foodtracker.presenter;
 
-import android.graphics.Movie;
 import android.support.annotation.NonNull;
 
-import com.pulkit.foodtracker.model.RestrauntDataRepository;
-import com.pulkit.foodtracker.model.RestrauntDataSource;
-import com.pulkit.foodtracker.pojo.Restraunts;
+import com.pulkit.foodtracker.model.RestaurantDataRepository;
+import com.pulkit.foodtracker.model.RestaurantDataSource;
+import com.pulkit.foodtracker.pojo.Restaurants;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by pulkitmital on 27/10/16.
  */
 
-public class RestrauntPresenter implements RestrauntContract.Presenter {
+public class RestaurantPresenter implements RestaurantContract.Presenter {
 
 
-    private final RestrauntDataRepository restrauntDataRepository;
-    private final RestrauntContract.View mRestrauntView;
+    private final RestaurantDataRepository restaurantDataRepository;
+    private final RestaurantContract.View mRestrauntView;
 
 
-    public RestrauntPresenter(@NonNull RestrauntDataRepository restrauntDataRepository, @NonNull RestrauntContract.View mRestrauntView) {
+    public RestaurantPresenter(@NonNull RestaurantDataRepository restaurantDataRepository, @NonNull RestaurantContract.View mRestrauntView) {
 
-        if (null == restrauntDataRepository) {
+        if (null == restaurantDataRepository) {
             throw new IllegalArgumentException("restrauntRepository cannot be null");
         }
         if (null == mRestrauntView) {
             throw new IllegalArgumentException("restrauntView cannot be null!");
         }
-        this.restrauntDataRepository = restrauntDataRepository;
+        this.restaurantDataRepository = restaurantDataRepository;
         this.mRestrauntView = mRestrauntView;
 
         mRestrauntView.setPresenter(this);
@@ -43,11 +41,11 @@ public class RestrauntPresenter implements RestrauntContract.Presenter {
 
     private void loadRestraunts() {
         mRestrauntView.showProgress();
-        restrauntDataRepository.getRestraunts(new RestrauntDataSource.LoadRestrauntCallback() {
+        restaurantDataRepository.getRestraunts(new RestaurantDataSource.LoadRestrauntCallback() {
 
 
             @Override
-            public void onRestrauntLoaded(ArrayList<Restraunts> restraunts) {
+            public void onRestrauntLoaded(ArrayList<Restaurants> restraunts) {
                 mRestrauntView.hideProgress();
                 mRestrauntView.showRestraunt(restraunts);
             }
@@ -55,7 +53,7 @@ public class RestrauntPresenter implements RestrauntContract.Presenter {
             @Override
             public void onDataNotAvailable() {
                 mRestrauntView.hideProgress();
-                mRestrauntView.showDataNotAvailableMessage("No Restraunts Available!");
+                mRestrauntView.showDataNotAvailableMessage("No Restaurants Available!");
             }
 
         });

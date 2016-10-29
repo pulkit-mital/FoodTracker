@@ -8,11 +8,7 @@ import android.util.Log;
 import com.pulkit.foodtracker.Utils.GeoLocationFinder;
 import com.pulkit.foodtracker.model.GeocodeDataRepository;
 import com.pulkit.foodtracker.model.GeocodeDataSource;
-import com.pulkit.foodtracker.model.RestrauntDataRepository;
-import com.pulkit.foodtracker.model.RestrauntDataSource;
-import com.pulkit.foodtracker.pojo.Restraunts;
 
-import java.util.ArrayList;
 
 /**
  * Created by pulkitmital on 28/10/16.
@@ -48,7 +44,6 @@ public class GeocodePresenter implements GeocodeContract.Presenter {
 
     public void setupLocation() {
 
-        geoCodeView.showProgress();
         GeoLocationFinder.LocationResult locationResult = new GeoLocationFinder.LocationResult() {
 
             @Override
@@ -62,7 +57,6 @@ public class GeocodePresenter implements GeocodeContract.Presenter {
                             "Got coordinates, congratulations. Longitude = "
                                     + newLocation.getLongitude() + " Latitude = "
                                     + newLocation.getLatitude());
-                    geoCodeView.hideProgress();
                     loadGeocodes(newLocation.getLatitude(), newLocation.getLongitude());
                 } else {
                     geoCodeView.onDataNotAvailable();
@@ -89,6 +83,7 @@ public class GeocodePresenter implements GeocodeContract.Presenter {
 
             @Override
             public void onDataNotAvailable() {
+                geoCodeView.hideProgress();
                 geoCodeView.onDataNotAvailable();
             }
 

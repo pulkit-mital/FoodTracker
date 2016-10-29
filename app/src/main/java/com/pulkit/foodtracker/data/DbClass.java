@@ -6,14 +6,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 
-import com.pulkit.foodtracker.pojo.Restraunts;
+import com.pulkit.foodtracker.pojo.Restaurants;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Created by pulkitmital on 27/10/16.
@@ -121,15 +118,15 @@ public class DbClass extends SQLiteOpenHelper {
         db.execSQL("delete from " + tableName);
     }
 
-    public ArrayList<Restraunts> getRestraunts() {
+    public ArrayList<Restaurants> getRestraunts() {
 
-        ArrayList<Restraunts> restraunts = new ArrayList<>();
+        ArrayList<Restaurants> restraunts = new ArrayList<>();
         try {
 
             String selectQuery = "SELECT * from " + TABLE_RESTAURANT + " ;";
             Cursor cursor = db.rawQuery(selectQuery, null);
             while (cursor.moveToNext()) {
-                Restraunts restraunt = new Restraunts();
+                Restaurants restraunt = new Restaurants();
                 restraunt.setId(cursor.getString(cursor.getColumnIndex(DbClass.RESTRAUNT_ID)));
                 restraunt.setName(cursor.getString(cursor.getColumnIndex(DbClass.RESTRAUNT_NAME)));
                 restraunt.setAddress(cursor.getString(cursor.getColumnIndex(DbClass.RESTRAUNT_ADDRESS)));

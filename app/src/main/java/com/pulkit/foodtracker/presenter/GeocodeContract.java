@@ -1,16 +1,12 @@
 package com.pulkit.foodtracker.presenter;
 
-import com.pulkit.foodtracker.pojo.Restraunts;
-
-import java.util.ArrayList;
-
 /**
  * Created by pulkitmital on 28/10/16.
  */
 
 public interface GeocodeContract {
 
-    interface View extends BaseView<RestrauntContract.Presenter> {
+    interface View extends BaseView<RestaurantContract.Presenter> {
         void showProgress();
 
         void hideProgress();

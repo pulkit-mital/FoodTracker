@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by pulkitmital on 27/10/16.
  */
 
-public class Restraunts implements Serializable {
+public class Restaurants implements Serializable {
 
     private String id;
     private String name;

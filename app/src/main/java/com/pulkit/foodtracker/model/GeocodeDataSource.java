@@ -2,10 +2,6 @@ package com.pulkit.foodtracker.model;
 
 import android.support.annotation.NonNull;
 
-import com.pulkit.foodtracker.pojo.Restraunts;
-
-import java.util.ArrayList;
-
 /**
  * Created by pulkitmital on 28/10/16.
  */

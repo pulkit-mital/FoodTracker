@@ -1,15 +1,14 @@
 package com.pulkit.foodtracker.presenter;
 
-import com.pulkit.foodtracker.pojo.Restraunts;
+import com.pulkit.foodtracker.pojo.Restaurants;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by pulkitmital on 27/10/16.
  */
 
-public interface RestrauntContract {
+public interface RestaurantContract {
 
     interface View extends BaseView<Presenter> {
         void showProgress();
@@ -18,7 +17,7 @@ public interface RestrauntContract {
 
         void setTitle(String title);
 
-        void showRestraunt(ArrayList<Restraunts> restraunts);
+        void showRestraunt(ArrayList<Restaurants> restraunts);
 
         void showDataNotAvailableMessage(String message);
 

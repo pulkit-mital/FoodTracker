@@ -1,10 +1,8 @@
 package com.pulkit.foodtracker.fragment;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -15,29 +13,29 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.pulkit.foodtracker.R;
-import com.pulkit.foodtracker.activities.RestrauntDetailActivity;
-import com.pulkit.foodtracker.adapter.RestrauntAdapter;
-import com.pulkit.foodtracker.pojo.Restraunts;
-import com.pulkit.foodtracker.presenter.RestrauntContract;
+import com.pulkit.foodtracker.activities.RestaurantDetailActivity;
+import com.pulkit.foodtracker.adapter.RestaurantAdapter;
+import com.pulkit.foodtracker.pojo.Restaurants;
+import com.pulkit.foodtracker.presenter.RestaurantContract;
 
 import java.util.ArrayList;
 
 /**
  * Created by pulkitmital on 27/10/16.
  */
-public class RestrauntFragment extends BaseFragment implements RestrauntContract.View, AdapterView.OnItemClickListener {
+public class RestaurantFragment extends BaseFragment implements RestaurantContract.View, AdapterView.OnItemClickListener {
 
 
-    private RestrauntContract.Presenter mPresenter;
+    private RestaurantContract.Presenter mPresenter;
     private ActionBar mActionBar;
-    private RestrauntAdapter restrauntAdapter;
-    private ArrayList<Restraunts> restraunts;
+    private RestaurantAdapter restaurantAdapter;
+    private ArrayList<Restaurants> restraunts;
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        restrauntAdapter = new RestrauntAdapter(new ArrayList<Restraunts>(0), getActivity());
+        restaurantAdapter = new RestaurantAdapter(new ArrayList<Restaurants>(0), getActivity());
         setHasOptionsMenu(true);
     }
 
@@ -52,7 +50,7 @@ public class RestrauntFragment extends BaseFragment implements RestrauntContract
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.restrunt_list_fragment_layout, container, false);
         ListView listView = (ListView) view.findViewById(R.id.listView);
-        listView.setAdapter(restrauntAdapter);
+        listView.setAdapter(restaurantAdapter);
         listView.setOnItemClickListener(this);
         return view;
     }
@@ -74,9 +72,9 @@ public class RestrauntFragment extends BaseFragment implements RestrauntContract
     }
 
     @Override
-    public void showRestraunt(ArrayList<Restraunts> restraunts) {
+    public void showRestraunt(ArrayList<Restaurants> restraunts) {
         this.restraunts = restraunts;
-        restrauntAdapter.replaceRestraunt(restraunts);
+        restaurantAdapter.replaceRestraunt(restraunts);
     }
 
     @Override
@@ -86,19 +84,19 @@ public class RestrauntFragment extends BaseFragment implements RestrauntContract
     }
 
     @Override
-    public void setPresenter(RestrauntContract.Presenter presenter) {
+    public void setPresenter(RestaurantContract.Presenter presenter) {
         mPresenter = presenter;
     }
 
-    public static RestrauntFragment newInstance() {
-        return new RestrauntFragment();
+    public static RestaurantFragment newInstance() {
+        return new RestaurantFragment();
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-        Restraunts restraunt = restraunts.get(i);
-        Intent intent = new Intent(getActivity(), RestrauntDetailActivity.class);
+        Restaurants restraunt = restraunts.get(i);
+        Intent intent = new Intent(getActivity(), RestaurantDetailActivity.class);
         intent.putExtra("restraunt_pojo", restraunt);
         startActivity(intent);
 
